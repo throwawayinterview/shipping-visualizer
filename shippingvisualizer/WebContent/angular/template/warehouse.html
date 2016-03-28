@@ -1,0 +1,16 @@
+<!-- Warehouse to show a visual representation of the packages and how heavy a package is-->
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="dropdown pull-right">
+			<a class="dropdown-toggle algo-selection" data-toggle="dropdown" href="#" role="button"> {{warehouseIdToAlgo[id]}} <span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<li ng-click="updateAlgo(id, item)" ng-repeat="item in allAlgos"><a href="#">{{item}}</a></li>
+			</ul>
+		</div>
+		<h3 class="panel-title"><i class="fa fa-building"></i> Warehouse {{id + 1}}</h3>
+	</div>
+	<div class="panel-body panel-container">
+		<div class="package" ng-repeat="package in packages track by $index" ng-class="getPackageClassification(package)"></div>
+	</div>
+</div>

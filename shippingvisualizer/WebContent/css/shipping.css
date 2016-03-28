@@ -1,0 +1,177 @@
+/*
+	CSS styles for the project. 
+*/
+
+body {
+  padding-top: 70px;	/* adjust the padding for the nav bar*/
+  font-size: 16px;
+}
+
+/*
+	Utility classes that are used to make page look nice and formatted
+
+*/
+
+.no-padding
+{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.no-padding-left
+{
+	padding-left: 0px;
+}
+
+.no-padding-right
+{
+	padding-right: 0px;
+}
+
+.panel-container
+{
+	max-height: 25vh;
+	overflow-y: auto;
+}
+
+.warehouse-button-container
+{
+	margin-bottom : 15px;
+}
+
+/*
+	Summary widget classes
+*/
+.package-summary-container
+{
+	margin-top: 50px;
+}
+
+.package-summary-value
+{
+	font-size: 24px;
+	font-weight: bold;
+}
+
+/* the representation of a package */
+.package	
+{
+	display: inline-block;
+	border: 1px solid black;
+	height: 20px;
+	width: 20px;
+	position: relative;
+	margin: 1px
+}
+
+/* the representation of a smaller package */
+.package-tiny
+{
+	display: inline-block;
+	border: 1px solid black;
+	height: 10px;
+	width: 10px;
+	position: relative;
+	margin: 1px
+}
+
+/*
+ Color coded the packages to show they have weight difference 
+*/
+.too-heavy
+{
+	border-radius: 100px;
+	border: 2px solid red;
+}
+
+/*Wanted a no smoking line trough it for packages that are too large to carry*/
+.too-heavy:after
+{
+	content:"";
+	position:absolute;
+	border-top:2px solid red;
+	width:23px;
+	transform: rotate(45deg);
+	transform-origin: 0% 0%;
+}
+
+.very-heavy
+{
+	background: #ed1b00;
+}
+
+.heavy
+{
+	background: #f07100;
+}
+
+.normal
+{
+	background: #ffc624;
+}
+
+.light
+{
+	background: lightgray;
+}
+
+.very-light
+{
+	background: white;
+}
+/* End of package weight representation */
+
+/*
+ Dock related items
+*/
+.truck-compartment
+{
+	min-height: 50px;
+	border: 1px solid lightgray;
+	right-padding
+}
+
+.algo-selection
+{
+	color: blue !important;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+/*
+	Summary css classes for the summary panel and table
+*/
+.summary-keys
+{
+	font-weight: bold;
+}
+
+.summary-title
+{
+	text-align: center;
+	font-weight: bold;
+}
+
+.summary-values
+{
+	text-align: center;
+}
+
+.summary-algo
+{
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.summary-winner-cell
+{
+	background: #EEFDEE;
+	color: green;
+	font-weight: bold;
+}
+
+.summary-loser-cell
+{
+	background: #FDEEEE;
+	color: #ED1B00;
+}

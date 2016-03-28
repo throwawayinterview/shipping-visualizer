@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Package Visualizer</title>
+		
+		<!-- load dependent css files -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/2.10.4/rzslider.min.css">
+		
+		<!-- Load our css file -->
+		<link href="css/shipping.css" rel="stylesheet">
+	
+	</head>
+	<body ng-app="shipping-visualizer" ng-controller="MainAppController">
+		
+		<!-- Basic nav bar -->
+		<div ng-include="'angular/template/navbar.html'"></div>
+		
+		<!-- Want an inset type application -->
+		<div class="container">
+	
+			<!-- Shipping Configuration -->
+			<div class="row">
+				<div ng-include="'angular/template/configurator.html'"></div>
+			</div>
+			
+			<!-- Warehouses -->
+			<div ng-if="packages.length > 0" class="row">
+				<div class="col-xs-6 no-padding-left">
+					<div ng-include="'angular/template/warehouse.html'" ng-controller="WarehouseController" ng-init="init(0, sortingAlgos, 2);"></div>
+				</div>
+				<div class="col-xs-6 no-padding-right">
+					<div ng-include="'angular/template/warehouse.html'" ng-controller="WarehouseController" ng-init="init(1, sortingAlgos, 1);"></div>
+				</div>
+			</div>
+			
+			<!-- Basic buttons for using the application -->
+			<div ng-if="packages.length > 0" class="row text-center warehouse-button-container">
+				<button type="button" class="btn btn-lg btn-default" ng-click="clearTrucks()">Clear Trucks</button>
+				<button type="button" class="btn btn-lg btn-success" ng-click="loadPackages()">Load Packages</button>
+			</div>
+			
+			<!-- Summary and Docks -->
+			<div class="row" ng-if="warehouseIdToBreakdown.length > 0">
+				
+				<!-- Summary widget -->
+				<div ng-include="'angular/template/summary.html'">
+				</div>
+				
+				<!-- The actual breakdown for the trucks -->
+				<div class="col-xs-6 no-padding-left">
+					<div ng-include="'angular/template/dock.html'" ng-controller="DockController" ng-init="init(0);"></div>
+				</div>
+				<div class="col-xs-6 no-padding-right">
+					<div ng-include="'angular/template/dock.html'" ng-controller="DockController" ng-init="init(1);"></div>
+				</div>
+			</div>
+	
+		</div>
+		<!-- /.container -->
+	
+		<!-- Dependent Scripts -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/2.10.4/rzslider.min.js"></script>
+		
+		<!-- Load our scripts -->
+		<script type="text/javascript" src="angular/main.js"></script>
+	   	<script type="text/javascript" src="angular/controller/mainAppController.js"></script>
+	   	<script type="text/javascript" src="angular/controller/warehouseController.js"></script>
+	   	<script type="text/javascript" src="angular/controller/dockController.js"></script>
+	   	
+	</body>
+</html>

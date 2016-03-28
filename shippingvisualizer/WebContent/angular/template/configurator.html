@@ -1,0 +1,53 @@
+<!-- A generic shipping configuration panel that has the ability to choose truck capacity and generate random packages -->
+<div class="panel panel-primary">
+	<div class="panel-heading" data-toggle="collapse" href="#configurationBody">
+		<h3 class="panel-title">
+			<i class="fa fa-cog"></i> Shipping Configuration
+		</h3>
+	</div>
+	<div class="panel-body" id="configurationBody">
+		<div class="row">
+		
+			<!--Truck max weight -->
+			<div class="col-xs-12 col-sm-4">
+				<h3 class="text-center">Truck Max Capacity (lbs)</h3>
+				<div class="">
+					<img class="media-object img-responsive center-block" ng-src="{{truckImageUrl}}">
+				</div>
+				<div>
+					<rzslider rz-slider-model="truckMaxCapacitySlider.value" rz-slider-options="truckMaxCapacitySlider.options"></rzslider>
+				</div>
+			</div>
+			<!-- End Truck max weight -->
+
+			<!-- Package Generator -->
+			<div class="col-xs-12 col-sm-8">
+				<h3 class="text-center">Package Generator</h3>
+
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="exampleInputName2"><span ng-if="randomizeWeight">Random Max </span>Weight:</label> <input type="number" class="form-control" ng-disabled="randomizeWeight" min="1" max="10000" step="100" ng-model="manualWeightPerPackage" ng-init="manualWeightPerPackage = 1000;">
+					</div>
+					<div class="checkbox">
+						<label> <input type="checkbox" ng-model="randomizeWeight" ng-init="randomizeWeight = true"> Random
+						</label>
+					</div>
+				</form>
+
+				<div>
+					<h3>Multi-Add</h3>
+					<rzslider rz-slider-model="packageGeneratorSlider.value" rz-slider-options="packageGeneratorSlider.options"></rzslider>
+					<div class="pull-right">
+						<button type="button" class="btn btn-lg btn-default" ng-click="clearWarehouse();">Clear Warehouse</button>
+						<button type="button" class="btn btn-lg btn-success" ng-click="addPackages(manualWeightPerPackage, packageGeneratorSlider.value, randomizeWeight); clearTrucks();">Add Packages</button>
+					</div>
+				</div>
+				<div class="package-summary-container">
+					<h3>Packages Summary</h3>
+					<span>Packages: <span class="package-summary-value">{{packages.length}}</span></span>
+					<span class="pull-right">Total Weight: <span class="package-summary-value">{{calculateSum(packages) | number}} lbs.</span></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

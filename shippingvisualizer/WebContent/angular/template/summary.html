@@ -1,0 +1,47 @@
+<!-- A summary breakdown to show which algo performed better -->
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title"><i class="fa fa-info-circle"></i> Algorithm Summary</h3>
+	</div>
+	<div class="panel-body">
+		<table class="table table-bordered">
+			<tr>
+				<th></th>
+				<th class="summary-title">Warehouse 1</th>
+				<th class="summary-title">Warehouse 2</th>
+			</tr>
+			<tr>
+				<td class="summary-keys">Algo Name</td>
+				<td class="summary-values summary-algo"  ng-class="{'summary-winner-cell' : warehouseIdToBreakdown[0].length < warehouseIdToBreakdown[1].length, 'summary-loser-cell' : warehouseIdToBreakdown[0].length > warehouseIdToBreakdown[1].length}">{{warehouseIdToAlgo[0]}}</td>
+				<td class="summary-values summary-algo"  ng-class="{'summary-winner-cell' : warehouseIdToBreakdown[1].length < warehouseIdToBreakdown[0].length, 'summary-loser-cell' : warehouseIdToBreakdown[1].length > warehouseIdToBreakdown[0].length}">{{warehouseIdToAlgo[1]}}</td>
+			</tr>
+			<tr>
+				<td class="summary-keys">Trucks needed</td>
+				<td class="summary-values"  ng-class="{'summary-winner-cell' : warehouseIdToBreakdown[0].length < warehouseIdToBreakdown[1].length, 'summary-loser-cell' : warehouseIdToBreakdown[0].length > warehouseIdToBreakdown[1].length}">{{warehouseIdToBreakdown[0].length}}</td>
+				<td class="summary-values"  ng-class="{'summary-winner-cell' : warehouseIdToBreakdown[1].length < warehouseIdToBreakdown[0].length, 'summary-loser-cell' : warehouseIdToBreakdown[1].length > warehouseIdToBreakdown[0].length}">{{warehouseIdToBreakdown[1].length}}</td>
+			</tr>
+			<tr>
+				<td class="summary-keys">Percent Filled</td>
+				<td class="summary-values"  ng-class="{'summary-winner-cell' : warehouseIdToBreakdown[0].length < warehouseIdToBreakdown[1].length, 'summary-loser-cell' : warehouseIdToBreakdown[0].length > warehouseIdToBreakdown[1].length}">
+					<div class="progress">
+						<div class="progress-bar" role="progressbar" ng-style="{'width': (getPercentFilled(0)) + '%'}">
+							<span>{{getPercentFilled(0) | number}}%</span>
+						</div>
+					</div>
+				</td>
+				<td  ng-class="{'summary-winner-cell' : warehouseIdToBreakdown[1].length < warehouseIdToBreakdown[0].length, 'summary-loser-cell' : warehouseIdToBreakdown[1].length > warehouseIdToBreakdown[0].length}">
+					<div class="progress">
+						<div class="progress-bar" role="progressbar" ng-style="{'width': (getPercentFilled(1)) + '%'}">
+							<span>{{getPercentFilled(1) | number}}%</span>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="summary-keys">Wasted Space</td>
+				<td class="summary-values" ng-class="{'summary-winner-cell' : warehouseIdToBreakdown[0].length < warehouseIdToBreakdown[1].length, 'summary-loser-cell' : warehouseIdToBreakdown[0].length > warehouseIdToBreakdown[1].length}">{{getWastedSpace(0) | number}} lbs.</td>
+				<td class="summary-values" ng-class="{'summary-winner-cell' : warehouseIdToBreakdown[1].length < warehouseIdToBreakdown[0].length, 'summary-loser-cell' : warehouseIdToBreakdown[1].length > warehouseIdToBreakdown[0].length}">{{getWastedSpace(1) | number}} lbs.</td>
+			</tr>
+		</table>
+	</div>
+</div>
